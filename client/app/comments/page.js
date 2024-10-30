@@ -44,6 +44,10 @@ const Comments = () => {
   }, []);
 
   const handleCommentSubmit = async () => {
+    if (!comment) {
+      alert("comment cannot be blank");
+      return;
+    }
     const username = localStorage.getItem("username");
     await axios.post("http://localhost:5001/api/comments", {
       username,

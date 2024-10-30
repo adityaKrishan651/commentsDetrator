@@ -10,6 +10,10 @@ const  Login = () => {
   const router = useRouter();
 
   const handleLogin = async () => {
+    if (!username) {
+      alert("Username cannot be blank");
+      return;
+    }
     const response = await axios.post('http://localhost:5001/api/login', { username });
     localStorage.setItem('sessionId', response.data.sessionId);
     localStorage.setItem('username', response.data.username);
